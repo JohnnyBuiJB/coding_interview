@@ -1,0 +1,205 @@
+{
+	"C - for loop": {
+		"prefix": "cfor",
+		"body": [
+			"for (${1|uint8_t,uint16_t,uint32_t,uint64_t|} ii = 0; ii < ${2:length}; ++ii)",
+			"{",
+			"  ${3}",
+			"}"
+		],
+		"description": "C - for loop"
+	},
+	"C - for reverse loop": {
+		"prefix": "cforr",
+		"body": [
+			"for (${1|uint8_t,uint16_t,uint32_t,uint64_t|} ii = ${2:length} - 1; ii > 0; --ii)",
+			"{",
+			"  ${3}",
+			"}"
+		],
+		"description": "C - for reverse loop"
+	},
+	"C function declaration - void": {
+		"prefix": "cdeclvoid0",
+		"body": [
+			"/**",
+			" * \\brief  ${2:description}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"void ${1:function_name}(void);"
+		],
+		"description": "C function declaration - void"
+	},
+	"C function declaration - void 1 param": {
+		"prefix": "cdeclvoid1",
+		"body": [
+			"/**",
+			" * \\brief  ${5:description}",
+			" * \\param  [${6|in,out,inout|}] ${4:var} ${7:param_desc}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1|void,static void,static inline void|} ${2:function_name}(${3:type} ${4:var});"
+		],
+		"description": "C function declaration - void 1 param"
+	},
+	"C function declaration - void 2 param": {
+		"prefix": "cdeclvoid2",
+		"body": [
+			"/**",
+			" * \\brief  ${7:description}",
+			" * \\param  [${8|in,out,inout|}] ${4:var} ${9:param_desc}",
+			" * \\param  [${10|in,out,inout|}] ${6:var} ${11:param_desc}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1|void,static void,static inline void|} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var});"
+		],
+		"description": "C function declaration - void 2 param"
+	},
+	"C function declaration - ret 1 param": {
+		"prefix": "cdeclret1",
+		"body": [
+			"/**",
+			" * \\brief  ${5:description}",
+			" * \\param  [${6|in,out,inout|}] ${4:var} ${7:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${8:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:function_name}(${3:type} ${4:var});"
+		],
+		"description": "C function declaration - ret 1 param"
+	},
+	"C function declaration - ret 1 param static": {
+		"prefix": "cdeclret1s",
+		"body": [
+			"/**",
+			" * \\brief  ${5:description}",
+			" * \\param  [${6|in,out,inout|}] ${4:var} ${7:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${8:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static ${1:type} ${2:function_name}(${3:type} ${4:var});"
+		],
+		"description": "C function declaration - ret 1 param static"
+	},
+	"C function declaration - ret 1 param static inline": {
+		"prefix": "cdeclret1si",
+		"body": [
+			"/**",
+			" * \\brief  ${5:description}",
+			" * \\param  [${6|in,out,inout|}] ${4:var} ${7:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${8:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static inline ${1:type} ${2:function_name}(${3:type} ${4:var});"
+		],
+		"description": "C function declaration - ret 1 param static inline"
+	},
+	"C function declaration - ret 2 param": {
+		"prefix": "cdeclret2",
+		"body": [
+			"/**",
+			" * \\brief  ${7:description}",
+			" * \\param  [${8|in,out,inout|}] ${4:var} ${9:param_desc}",
+			" * \\param  [${10|in,out,inout|}] ${6:var} ${11:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${12:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var});"
+		],
+		"description": "C function declaration - ret 2 param"
+	},
+	"C function declaration - ret 2 param static": {
+		"prefix": "cdeclret2s",
+		"body": [
+			"/**",
+			" * \\brief  ${7:description}",
+			" * \\param  [${8|in,out,inout|}] ${4:var} ${9:param_desc}",
+			" * \\param  [${10|in,out,inout|}] ${6:var} ${11:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${12:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static ${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var});"
+		],
+		"description": "C function declaration - ret 2 param"
+	},
+	"C function declaration - ret 2 param static inline": {
+		"prefix": "cdeclret2si",
+		"body": [
+			"/**",
+			" * \\brief  ${7:description}",
+			" * \\param  [${8|in,out,inout|}] ${4:var} ${9:param_desc}",
+			" * \\param  [${10|in,out,inout|}] ${6:var} ${11:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${12:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static inline ${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var});"
+		],
+		"description": "C function declaration - ret 2 param static inline"
+	},
+	"C function declaration - ret 3 param": {
+		"prefix": "cdeclret3",
+		"body": [
+			"/**",
+			" * \\brief  ${9:description}",
+			" * \\param  [${10|in,out,inout|}] ${4:var} ${11:param_desc}",
+			" * \\param  [${12|in,out,inout|}] ${6:var} ${13:param_desc}",
+			" * \\param  [${14|in,out,inout|}] ${8:var} ${15:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${16:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var}, ${7:type} ${8:var});"
+		],
+		"description": "C function declaration - ret 3 param"
+	},
+	"C function declaration - ret 3 param static": {
+		"prefix": "cdeclret3s",
+		"body": [
+			"/**",
+			" * \\brief  ${9:description}",
+			" * \\param  [${10|in,out,inout|}] ${4:var} ${11:param_desc}",
+			" * \\param  [${12|in,out,inout|}] ${6:var} ${13:param_desc}",
+			" * \\param  [${14|in,out,inout|}] ${8:var} ${15:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${16:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static ${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var}, ${7:type} ${8:var});"
+		],
+		"description": "C function declaration - ret 3 param static"
+	},
+	"C function declaration - ret 3 param static inline": {
+		"prefix": "cdeclret3si",
+		"body": [
+			"/**",
+			" * \\brief  ${9:description}",
+			" * \\param  [${10|in,out,inout|}] ${4:var} ${11:param_desc}",
+			" * \\param  [${12|in,out,inout|}] ${6:var} ${13:param_desc}",
+			" * \\param  [${14|in,out,inout|}] ${8:var} ${15:param_desc}",
+			" * \\return ${1:type}",
+			" *         ${16:detail}",
+			" * \\author Author",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"static inline ${1:type} ${2:function_name}(${3:type} ${4:var}, ${5:type} ${6:var}, ${7:type} ${8:var});"
+		],
+		"description": "C function declaration - ret 3 param static inline"
+	}
+}

@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Build
+build/*
+
+# Vscode
+.vscode/*
+
+# Python
+*.pyc

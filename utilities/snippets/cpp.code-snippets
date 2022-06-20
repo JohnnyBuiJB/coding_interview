@@ -1,0 +1,261 @@
+{
+	"Cpp header": {
+		"prefix": "cppHeader",
+		"body": [
+			"/**",
+			" * \\internal",
+			" * \\file    ${TM_FILENAME}",
+			" * \\brief   ${2:fileBriefDescription}",
+			" * \\endinternal",
+			" */",
+			"",
+			"/*================================================================================================*/",
+			"/*  Multiple inclusion protection                                                                 */",
+			"/*================================================================================================*/",
+			"#ifndef __${TM_FILENAME/[\\.]/_/}__",
+			"#define __${TM_FILENAME/[\\.]/_/}__",
+			"",
+			"/*================================================================================================*/",
+			"/*  Inclusion                                                                                     */",
+			"/*================================================================================================*/",
+			"/* Related headers */",
+			"",
+			"/* C system headers */",
+			"",
+			"/* C++ standard library headers */",
+			"",
+			"/* Other libraries' headers */",
+			"",
+			"/* Project's headers */",
+			"",
+			"/*================================================================================================*/",
+			"/*  Class definitions                                                                             */",
+			"/*================================================================================================*/",
+			"",
+			"/*================================================================================================*/",
+			"/*  End of multiple inclusion protection                                                          */",
+			"/*================================================================================================*/",
+			"#endif // __${TM_FILENAME/[\\.]/_/}__",
+			"/**",
+			" * \\internal",
+			" * \\addtogroup    ${1:module_name}",
+			" * \\endinternal",
+			" */",
+			""
+		],
+		"description": "Cpp header"
+	},
+
+	"Cpp source": {
+		"prefix": "cppSource",
+		"body": [
+			"/**",
+			" * \\file    ${TM_FILENAME}",
+			" * \\brief   ${2:fileBriefDescription}",
+			" */",
+			"",
+			"/*================================================================================================*/",
+			"/*  Inclusion                                                                                     */",
+			"/*================================================================================================*/",
+			"/* Related headers */",
+			"",
+			"/* C system headers */",
+			"",
+			"/* C++ standard library headers */",
+			"",
+			"/* Other libraries' headers */",
+			"",
+			"/* Project's headers */",
+			"",
+			"/*================================================================================================*/",
+			"/*  Class implementation                                                                          */",
+			"/*================================================================================================*/",
+			"",
+		],
+		"description": "Cpp source"
+	},
+
+	"Cpp namespace declaration": {
+		"prefix": "cppNamespace",
+		"body": [
+			"namespace ${1:namespace} {",
+			"",
+			"} // namespace ${1:namespace}"
+		],
+		"description": "Cpp 1-param method declaration"
+	},
+
+	"Cpp class definition": {
+		"prefix": "cppClass",
+		"body": [
+			"/**",
+			" * \\internal",
+			" * \\ingroup  ${1:module_name}",
+			" * \\class    ${2:ClassName} ${TM_FILENAME}",
+			" * \\brief    ${3:BriefDescription}",
+			" * \\details  ${4:DetailedDescription}",
+			" * \\date     $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * \\endinternal",
+			" */",
+			"class ${2:ClassName} {",
+			"public:",
+			"",
+			"protected:",
+			"",
+			"private:",
+			"",
+			"};",
+		],
+		"description": "Cpp class definition"
+	},
+
+	"Cpp struct definition": {
+		"prefix": "cppStruct",
+		"body": [
+			"/**",
+			" * \\internal",
+			" * \\ingroup  ${1:module_name}",
+			" * \\struct   ${2:StructName} ${TM_FILENAME}",
+			" * \\brief    ${3:BriefDescription}",
+			" * \\details  ${4:DetailedDescription}",
+			" * \\date     $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * \\endinternal",
+			" */",
+			"struct ${2:StructName} {",
+			"    /*! ${7:MemberDescription} */",
+			"    ${5:MemberType} ${6:MemberName}",
+			"};",
+		],
+		"description": "Cpp class definition"
+	},
+
+	"Cpp interface definition": {
+		"prefix": "cppInterface",
+		"body": [
+			"/**",
+			" * \\ingroup   ${1:module_name}",
+			" * \\interface ${2:ClassName} ${TM_FILENAME}",
+			" * \\brief     ${3:BriefDescription}",
+			" * \\details   ${4:DetailedDescription}",
+			" * \\date      $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"class ${2:ClassName} {",
+			"public:",
+			"",
+			"};",
+		],
+		"description": "Cpp interface definition"
+	},
+
+	"Cpp 1-param method declaration": {
+		"prefix": "cppMethod1",
+		"body": [
+			"/**",
+			" * \\brief  ${5:description}",
+			" * \\param  [${6|in,out,inout|}] ${4:var} ${7:param_desc}",
+			" * \\return ${8:description}",
+			" * \\retval ${1:type} ${9:detail}",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:methodName}(${3:type} ${4:var});"
+		],
+		"description": "Cpp 1-param method declaration"
+	},
+
+	"Cpp 2-param method declaration": {
+		"prefix": "cppMethod2",
+		"body": [
+			"/**",
+			" * \\brief  ${7:description}",
+			" * \\param  [${8|in,out,inout|}] ${4:var1} ${9:param_desc}",
+			" * \\param  [${10|in,out,inout|}] ${6:var2} ${11:param_desc}",
+			" * \\return ${12:description}",
+			" * \\retval ${1:type} ${13:detail}",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:methodName}(${3:type} ${4:var1}, ${5:type} ${6:var2});"
+		],
+		"description": "Cpp 2-param method declaration"
+	},
+
+	"Cpp 3-param method declaration": {
+		"prefix": "cppMethod3",
+		"body": [
+			"/**",
+			" * \\brief  ${9:description}",
+			" * \\param  [${10|in,out,inout|}] ${4:var1} ${11:param_desc}",
+			" * \\param  [${12|in,out,inout|}] ${6:var2} ${13:param_desc}",
+			" * \\param  [${14|in,out,inout|}] ${8:var3} ${15:param_desc}",
+			" * \\return ${16:description}",
+			" * \\retval ${1:type} ${17:detail}",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:methodName}(${3:type} ${4:var1}, ${5:type} ${6:var2}, ${7:type} ${8:var3});"
+		],
+		"description": "Cpp 3-param method declaration"
+	},
+
+	"Cpp 4-param method declaration": {
+		"prefix": "cppMethod4",
+		"body": [
+			"/**",
+			" * \\brief  ${10:description}",
+			" * \\param  [${11|in,out,inout|}] ${4:var1} ${12:param_desc}",
+			" * \\param  [${13|in,out,inout|}] ${6:var2} ${14:param_desc}",
+			" * \\param  [${15|in,out,inout|}] ${8:var3} ${16:param_desc}",
+			" * \\param  [${17|in,out,inout|}] ${10:var3} ${18:param_desc}",
+			" * \\return ${19:description}",
+			" * \\retval ${1:type} ${20:detail}",
+			" * \\date   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+			"${1:type} ${2:methodName}(${3:type} ${4:var1}, ${5:type} ${6:var2}, ${7:type} ${8:var3}, ${9:type} ${10:var3});"
+		],
+		"description": "Cpp 4-param method declaration"
+	},
+
+	"Cpp - for loop": {
+		"prefix": "cppfor",
+		"body": [
+			"for (${1|uint8_t,uint16_t,uint32_t,uint64_t|} ii = 0; ii < ${2:length}; ++ii)",
+			"{",
+			"  ${3}",
+			"}"
+		],
+		"description": "Cpp - for loop"
+	},
+
+	"Cpp - for reverse loop": {
+		"prefix": "cppforr",
+		"body": [
+			"for (${1|uint8_t,uint16_t,uint32_t,uint64_t|} ii = ${2:length} - 1; ii > 0; --ii)",
+			"{",
+			"  ${3}",
+			"}"
+		],
+		"description": "Cpp - for reverse loop"
+	},
+
+	"Cpp - test definition": {
+		"prefix": "cppTest",
+		"body": [
+			"/**",
+			" * \\internal",
+			" * \\brief      ${1:Brief}",
+			" * \\date       $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" */",
+		],
+		"description": "Cpp test definition"
+	},
+
+	"Cpp - Enumeration": {
+		"prefix": "cppEnum",
+		"body": [
+			"/*! \\enum ${1:name_space}::${2:EnumName}",
+			" * ",
+			" */",
+			"enum class ${2:EnumName} {",
+			"    ${3:FirstValue}    /*!< ${4:FirstValueDescription} */",
+			"}",
+		],
+	},
+}
