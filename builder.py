@@ -324,7 +324,7 @@ if __name__ == "__main__":
         for target in args.target:
             if args.perf:
                 # Generate performance report
-                build_cmd += 'make ' + target + '_test_performance' + '; '
+                build_cmd += 'make ' + target + '_perf_test_execution' + '; '
             elif args.coverage:
                 build_cmd +=  ' make ' + target + '_test_coverage' + '; '
                 post_build_cmd += 'open test/' + target + '/html/coverage.html'
