@@ -50,7 +50,6 @@ add_link_options("LINKER:-map,${PROJECT_BINARY_DIR}/output.map")
 #    THIRD PARTY INCLUDE DIRS
 ################################################################################
 set (third_party_include_dirs "")
-list (APPEND third_party_include_dirs "${root}/third_party/cpputest/include")
 
 ################################################################################
 #    THIRD PARTY LIBRARIES
@@ -59,7 +58,6 @@ set (third_party_library_dirs "")
 list (APPEND third_party_library_dirs "${CMAKE_CURRENT_SOURCE_DIR}/../../libs")
 
 set (third_party_libraries "")
-list (APPEND third_party_libraries "libCppUTest.a")
 
 ################################################################################
 #    ADD TARGETS
@@ -82,7 +80,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC "${third_party_libraries}")
 
 #-------------------------------- Code coverage --------------------------------
 add_custom_target(${PROJECT_NAME}_execution
-    COMMAND ${PROJECT_BINARY_DIR}/${PROJECT_NAME}
+    COMMAND ${PROJECT_BINARY_DIR}/${PROJECT_NAME} > performance.csv
+    COMMAND objdump -D ${PROJECT_BINARY_DIR}/${PROJECT_NAME} > ${PROJECT_BINARY_DIR}/out.asm
     DEPENDS ${PROJECT_BINARY_DIR}/${PROJECT_NAME}
 )
-
