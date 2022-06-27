@@ -12,7 +12,7 @@ project(algorithms  VERSION 1.0
                     LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 14)
-
+set(COMPILE_FLAGS -O0)
 ################################################################################
 #    CONFIGURE ENVIRONMENT PATHS
 ################################################################################
@@ -22,21 +22,6 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/toolchain/default_toolchai
 ################################################################################
 #    CONFIGURE TARGET ARCHITECTURE
 ################################################################################
-# set(arch "32_bits" CACHE STRING "Select target architecture")
-# set(arch "64_bits" CACHE STRING "Select target architecture")
-# set(arch "arm64" CACHE STRING "Select target architecture")
-# set(CMAKE_REQUIRED_LINK_OPTIONS "-arch;arm64")
-# set(CMAKE_SYSTEM_PROCESSOR "ARMClang")
-# set(CMAKE_SYSTEM_PROCESSOR arm)
-# set(CMAKE_SYSTEM_PROCESSOR arm)
-
-# set(triple arm-linux-gnueabihf)
-
-# set(CMAKE_C_COMPILER clang)
-# set(CMAKE_C_COMPILER_TARGET ${triple})
-# set(CMAKE_CXX_COMPILER clang++)
-# set(CMAKE_CXX_COMPILER_TARGET ${triple})
-# check_c_compiler_flag("-arch arm64" arm64Supported)
 
 ################################################################################
 #    CONFIGURE OPTIONS
@@ -80,15 +65,12 @@ include(${CMAKE_TOOLCHAIN_FILE})
 ################################################################################
 #    ADD RECURSIVELY
 ################################################################################
-# TODO: Add command to build library
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test")
 
 ################################################################################
 #    INSTALL
 ################################################################################
-# TODO: Add command to install library
-# set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/../../src/cmsis)
 
 ################################################################################
 #    POST PROCESSING

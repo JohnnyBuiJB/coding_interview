@@ -20,19 +20,23 @@ project("${module_name}_test")
 #    SOURCE FILES
 ################################################################################
 file(GLOB_RECURSE module_source "${root}/src/${module_name}/*.cpp")
+file(GLOB_RECURSE test_utils_sources "${root}/test/utils/*.cpp")
 
 set(sources "")
 
 list(APPEND sources ${module_source})
+list(APPEND sources ${test_utils_sources})
 
 ################################################################################
 #    HEADER FILES
 ################################################################################
 file(GLOB_RECURSE module_headers "${root}/src/${module_name}/*.hpp")
+file(GLOB_RECURSE test_utils_headers "${root}/test/utils/*.hpp")
 
 set(headers "")
 
 list(APPEND headers ${module_headers})
+list(APPEND headers ${test_utils_headers})
 
 ################################################################################
 #    TESTS
