@@ -55,9 +55,5 @@ int main() {
         std::cout << std::to_string(min_time) << std::endl;
     }
 
-    
-
-    
-
     return 0;
 }

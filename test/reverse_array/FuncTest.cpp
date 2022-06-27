@@ -24,3 +24,13 @@ TEST(func, TC001) {
 
     CHECK(in == exp_out);
 }
+
+TEST(func, TC002) {
+    // Prepare data
+    std::vector<int> in = {4, 5, 1, 2};
+    std::vector<int> exp_out = {2, 1, 5, 4};
+
+    reverse_array(in);
+
+    CHECK(in == exp_out);
+}
