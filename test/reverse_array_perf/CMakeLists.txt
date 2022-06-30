@@ -80,7 +80,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC "${third_party_libraries}")
 
 #-------------------------------- Code coverage --------------------------------
 add_custom_target(${PROJECT_NAME}_execution
-    COMMAND ${PROJECT_BINARY_DIR}/${PROJECT_NAME} > performance.csv
+    COMMAND ${PROJECT_BINARY_DIR}/${PROJECT_NAME} > ${root}/test/${module_name}_perf/performance.csv
     COMMAND objdump -D ${PROJECT_BINARY_DIR}/${PROJECT_NAME} > ${PROJECT_BINARY_DIR}/out.asm
     DEPENDS ${PROJECT_BINARY_DIR}/${PROJECT_NAME}
 )
