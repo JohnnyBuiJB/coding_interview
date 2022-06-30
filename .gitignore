@@ -39,3 +39,7 @@ build/*
 
 # Python
 *.pyc
+
+# Artifact
+out.asm
+performance.csv
