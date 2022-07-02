@@ -43,3 +43,6 @@ build/*
 # Artifact
 out.asm
 performance.csv
+
+# Cpp practice
+test/cpp_practice/
