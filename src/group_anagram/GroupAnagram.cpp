@@ -6,45 +6,6 @@
 
 using namespace std;
 
-namespace {
-unordered_map<char,int> getStringMakeup(string s) {
-    unordered_map<char,int> makeup;
-
-    for (const auto& c : s) {
-        // Found
-        if (makeup.count(c)) {
-            makeup[c]++;
-        } else {
-            makeup[c] = 1;
-        }
-    }
-
-    return makeup;
-}
-
-bool isAnagram(unordered_map<char,int> makeup, string s2) {
-    for (const auto& c : s2) {
-        // Found
-        if (makeup.count(c)) {
-            if (makeup[c] == 1) {
-                makeup.erase(c);
-            } else {
-                makeup[c]--;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    // Not using up makeup
-    if (!makeup.empty()) {
-        return false;
-    }
-
-    return true;
-}
-}
-
 class ArrayHash {
 public:
     size_t operator()(const array<int,26> key) const {
@@ -60,6 +21,13 @@ public:
     }
 };
 
+/*
+Time:   O(nm) with n is the number of strings and m is the average length 
+        of each string
+Idea:   Use the make up of the string as key -> strings with the same makeup 
+        are anagrams. This implementation uses an array[26] to represent 
+        the make up, which requires a custom hash function.
+*/
 vector<vector<string> > groupAnagrams(vector<string>& strs) {
     unordered_map< array<int,26>, vector<string>, ArrayHash > hm;
 
