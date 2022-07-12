@@ -258,4 +258,16 @@
 			"}",
 		],
 	},
+
+    "Cpp - Approach": {
+		"prefix": "cppApproach",
+		"body": [
+			"/**",
+			" * \\Time    ${1:Time}",
+            " * \\Space   ${2:Space}",
+			" * \\Trick   ${3:Trick}",
+            " * \\Ref     ${4:Reference}",
+			" */",
+		],
+	},
 }
