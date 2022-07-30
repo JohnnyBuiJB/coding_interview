@@ -4,7 +4,7 @@
 using namespace std;
 
 /**
- * \Trick   Sliding window, if the attribute as the counts of characters stored 
+ * \Trick   Sliding window with the attribute as the counts of characters stored 
  *          in a hash table.
  * \Time    O(|s1| + |s2|), one pass through s1 and one pass through s2.
  * \Space   O(s1), the hash table
