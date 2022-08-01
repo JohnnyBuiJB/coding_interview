@@ -6,6 +6,8 @@ using namespace std;
 /**
  * \Trick   Sliding window with the attribute as the counts of characters stored 
  *          in a hash table.
+ *          The goal is to empty the counts of s2 because checking the emptyness 
+ *          of the hash table of counts of s2 takes O(1) time.
  * \Time    O(|s1| + |s2|), one pass through s1 and one pass through s2.
  * \Space   O(s1), the hash table
  * \Ref     Reference
