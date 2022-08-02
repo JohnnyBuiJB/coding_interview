@@ -368,23 +368,16 @@ if __name__ == "__main__":
             with open(test_cmake,'r+') as f:
                 file = f.read()
                 
-                # Replacing the module name
-                # file = re.sub("set(module_name \"sample\")", \
-                #               "set(module_name \"%s\")" % mod_name, \
-                #               file)
-                
                 file = re.sub("module_name \"sample\"", \
                               "module_name \"%s\"" % mod_name, \
                               file)
-        
-                
                 
                 f.seek(0)
                 f.write(file)
                 f.truncate()
-            
-            
-        
+                
+        clean()
+        setup_once()
     
     if args.target:
         pre_build_cmd += 'cd build; '
