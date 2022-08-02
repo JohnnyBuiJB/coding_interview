@@ -25,8 +25,7 @@ TEST_GROUP(sample) {
     }
 };
 
-// 1. Input domain
-TEST(sample, test_case_1) {
+TEST(sample, TC001) {
     sample_code();
     CHECK(NULL == NULL);
 }
