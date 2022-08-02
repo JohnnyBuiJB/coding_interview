@@ -1,9 +1,12 @@
+import enum
+from operator import mod
 import os
 import re
 import json
 from shutil import copyfile, rmtree
 from os.path import join, abspath, exists, isdir
 from os import getcwd, listdir
+from distutils.dir_util import copy_tree
 import argparse
 from config.config import STATIC_ANALYZER_DIR
 
@@ -34,6 +37,17 @@ SUBMODULE_POOL = "submodule"
 #     current_dir = os.path.abspath(os.getcwd())
 #     ret = os.path.join(current_dir, name)
 #     return ret
+
+def snake_to_pascal(name):
+    str = list(name)
+    
+    str[0] = str[0].upper()
+    
+    for i,c in enumerate(str):
+        if c == '_':
+            str[i + 1] = str[i + 1].upper()
+            
+    return "".join(str)
 
 class CoverageSummary:
     def __init__(self):
@@ -278,6 +292,12 @@ def create_parser():
     group.add_argument('-c', '--clean',
                         action='store_true',
                         help='Clean project')
+    group.add_argument('-n', '--new',
+                        nargs = 1,
+                        help='New module')
+    group.add_argument('-d', '--delete',
+                        nargs = 1,
+                        help='Delete module')
     return parser
 
 def setup_once():
@@ -318,6 +338,53 @@ if __name__ == "__main__":
                         print('\t\t\t%d - %s' % (ii, folder))
         else:
             print('The system has not been set up!!!')
+    
+    if args.delete:
+        for mod_name in args.delete:
+            rmtree("./test/%s" % mod_name)
+            rmtree("./src/%s" % mod_name)
+            
+    if args.new:
+        for mod_name in args.new:
+            if os.path.exists("./test/%s" % mod_name):
+                rmtree("./test/%s" % mod_name)
+                rmtree("./src/%s" % mod_name)
+            
+            # Replicate template
+            copy_tree("./test/sample", "./test/" + mod_name)
+            copy_tree("./src/sample", "./src/" + mod_name)
+            
+            mod_name_pascal = snake_to_pascal(mod_name)
+            
+            os.rename("./src/%s/sample.cpp" % (mod_name), \
+                      "./src/%s/%s.cpp" % (mod_name, mod_name_pascal))
+            
+            os.rename("./test/%s/Test.cpp" % (mod_name), \
+                      "./test/%s/%sTest.cpp" % (mod_name, mod_name_pascal))
+            
+            test_cmake = "./test/%s/CMakeLists.txt" % (mod_name)
+
+            # Modify build file
+            with open(test_cmake,'r+') as f:
+                file = f.read()
+                
+                # Replacing the module name
+                # file = re.sub("set(module_name \"sample\")", \
+                #               "set(module_name \"%s\")" % mod_name, \
+                #               file)
+                
+                file = re.sub("module_name \"sample\"", \
+                              "module_name \"%s\"" % mod_name, \
+                              file)
+        
+                
+                
+                f.seek(0)
+                f.write(file)
+                f.truncate()
+            
+            
+        
     
     if args.target:
         pre_build_cmd += 'cd build; '
