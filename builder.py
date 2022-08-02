@@ -46,7 +46,10 @@ def snake_to_pascal(name):
     for i,c in enumerate(str):
         if c == '_':
             str[i + 1] = str[i + 1].upper()
-            
+    
+    for i in range(str.count('_')):
+        str.remove('_')
+    
     return "".join(str)
 
 class CoverageSummary:
