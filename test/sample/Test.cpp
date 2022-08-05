@@ -13,7 +13,7 @@
 
 using namespace std;
 
-extern int sample_code();
+extern int sample_code(int a);
 
 TEST_GROUP(sample) {
     void setup() {
@@ -26,6 +26,9 @@ TEST_GROUP(sample) {
 };
 
 TEST(sample, TC001) {
-    sample_code();
-    CHECK(NULL == NULL);
+    int in = 0;
+    auto exp = 0;
+
+    auto act = sample_code(in);
+    CHECK(act == exp);
 }

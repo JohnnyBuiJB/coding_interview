@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int sample_code() {
+int sample_code(int a) {
     cout << "sample code" << endl;
 
     return 0;
