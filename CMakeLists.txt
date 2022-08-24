@@ -26,6 +26,8 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/toolchain/default_toolchai
 ################################################################################
 #    CONFIGURE OPTIONS
 ################################################################################
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror")
+
 option(CODE_COVERAGE "Code coverage" OFF) # Enable / disable code coverage
 option(ENABLE_TEST "Enable test" ON) # Enable / disable testing
 if(${CODE_COVERAGE})
