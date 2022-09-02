@@ -49,3 +49,5 @@ test/cpp_practice/
 
 # Performance script
 test/utils/PerfAnalysis.ipynb
+
+coding_board.txt
