@@ -20,10 +20,12 @@ project("${module_name}_test")
 #    SOURCE FILES
 ################################################################################
 file(GLOB_RECURSE module_source "${root}/src/${module_name}/*.cpp")
+file(GLOB_RECURSE linked_list_source "${root}/src/linked_list/*.cpp")
 
 set(sources "")
 
 list(APPEND sources ${module_source})
+list(APPEND sources ${linked_list_source})
 
 ################################################################################
 #    HEADER FILES

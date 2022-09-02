@@ -24,28 +24,6 @@ TEST_GROUP(sample) {
     }
 };
 
-void delete_linked_list(ListNode* head) {
-    // Precondition
-    if (head == nullptr) {
-        return;
-    }
-    
-    // Multiple nodes
-    if (head->next != nullptr) {
-        // Delete the tail list
-        delete_linked_list(head->next);
-
-        // Unlink
-        head->next = nullptr;
-
-        return delete_linked_list(head);
-    } 
-    // Only one node
-    else {
-        delete head;
-    }
-};
-
 TEST(sample, TC001) {
     ListNode* p_head = new ListNode(1);
     ListNode* p_cur = p_head;
