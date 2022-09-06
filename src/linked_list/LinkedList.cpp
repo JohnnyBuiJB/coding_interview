@@ -58,3 +58,30 @@ ListNode* find_node(ListNode* head, int val) {
 
     return nullptr;
 }
+
+void delete_random_linked_list(Node* head) {
+    while (head) {
+        Node* next = head->next;
+        delete head;
+        head = next;
+    }
+};
+
+Node* create_random_linked_list(vector<int> values) {
+    Node* head = nullptr;
+    Node* prev = nullptr;
+    if (!values.empty()) {
+        head = prev = new Node(values[0]);
+
+        auto it = values.begin();
+        it++;
+        for (; it != values.end(); it++) {
+            Node* node = new Node(*it);
+
+            prev->next = node;
+            prev = node;
+        }
+    }
+    
+    return head;
+}
