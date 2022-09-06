@@ -392,7 +392,8 @@ if __name__ == "__main__":
                 build_cmd +=  ' make ' + target + '_test_coverage' + '; '
                 post_build_cmd += 'open test/' + target + '/html/coverage.html'
             else:
-                build_cmd += STATIC_ANALYZER_DIR + ' make ' + target + '_test_execution' + '; '
+                # build_cmd += STATIC_ANALYZER_DIR + ' make ' + target + '_test_execution' + '; '
+                build_cmd += ' make ' + target + '_test_execution' + '; '
         
     elif build_cmd:
         if args.verbose:
