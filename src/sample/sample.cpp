@@ -7,7 +7,7 @@
 using namespace std;
 
 int sample_code(int a) {
-    cout << "sample code" << endl;
+    cout << "sample code" << a << endl;
 
     return 0;
 }
