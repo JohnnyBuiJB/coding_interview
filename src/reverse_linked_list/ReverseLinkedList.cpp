@@ -8,27 +8,28 @@
 using namespace std;
 
 ListNode* reverseList(ListNode* head) {
-    // Preconditions
-    if (head == nullptr) {
-        return nullptr;
+    // Sanity check
+    if (!head) {
+        return head;
     }
+
+    ListNode* next = head->next;
+    ListNode* next_next = nullptr;
     
-    ListNode* p_cur = head;
-    ListNode* p_next = p_cur->next;
-    p_cur->next = nullptr;
-    ListNode* p_next_next = nullptr;
-    
-    // Preconditions: p_cur and p_next are predetermined
-    while (p_next != nullptr) {
-        p_next_next = p_next->next;
+    // Head becomes tail after reverse
+    head->next = nullptr;
+
+    while (next) {
+        // Save prev states
+        next_next = next->next;
         
-        // Reverse the link
-        p_next->next = p_cur;
+        // Reverse
+        next->next = head;
         
-        // Move forward
-        p_cur = p_next;
-        p_next = p_next_next;
+        // Update states
+        head = next;
+        next = next_next;
     }
-    
-    return p_cur;
+
+    return head;
 }

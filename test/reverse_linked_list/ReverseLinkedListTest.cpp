@@ -6,8 +6,9 @@
 #include <unordered_set>
 
 #include "CppUTest/TestHarness.h"
-#include "ReverseLinkedList.hpp"
+#include "LinkedList.hpp"
 
+extern ListNode* reverseList(ListNode* head);
 
 #undef new
 #include <new>
