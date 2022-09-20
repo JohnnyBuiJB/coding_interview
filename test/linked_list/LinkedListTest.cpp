@@ -119,3 +119,48 @@ TEST(find_node, TC003) {
 
     delete_linked_list(list);
 }
+
+TEST_GROUP(doubly_linked_list) {
+    void setup() {
+        // TBD
+    }
+
+    void teardown() {
+        // TBD
+    }
+};
+
+TEST(doubly_linked_list, TC001) {
+    vector<int> in = {1,2,3,4};
+
+    DoublyLinkedList* list = create_doubly_linked_list(in);
+
+    for (auto& v : in) {
+        auto node = list->front();
+
+        CHECK_EQUAL(v, node->value);
+        list->pop_front();
+    }
+
+    delete list;
+}
+
+TEST(doubly_linked_list, TC002) {
+    vector<int> in = {1,2,3,4};
+    vector<int> exp = {1,2,10,3,4};
+
+    DoublyLinkedList* list = create_doubly_linked_list(in);
+
+    auto node_two = list->find_node(2);
+    DoublyLinkedNode* new_node = new DoublyLinkedNode(10);
+    list->insert_after(new_node, node_two);
+
+    DoublyLinkedNode* cur = list->front();
+
+    for (auto &v : exp) {
+        CHECK_EQUAL(v, cur->value);
+        cur = cur->next;
+    }
+
+    delete list;
+}

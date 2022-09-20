@@ -85,3 +85,131 @@ Node* create_random_linked_list(vector<int> values) {
     
     return head;
 }
+
+
+DoublyLinkedNode* DoublyLinkedList::front() {
+    return head;
+};
+
+DoublyLinkedNode* DoublyLinkedList::back() {
+    return tail;
+};
+
+bool DoublyLinkedList::pop_front() {
+    if (mSize > 0) {
+        if (head == tail) {
+            delete head;
+            head = tail = nullptr;
+        } else {
+            auto next = head->next;
+            next->prev = nullptr;
+            delete head;
+            head = next;
+        }
+        mSize--;
+
+        return true;
+    }
+
+    return false;
+};
+
+void DoublyLinkedList::push_back(int value) {
+    DoublyLinkedNode* new_node = new DoublyLinkedNode(value);
+    if (mSize == 0) {
+        head = new_node;
+        tail = new_node;
+    } else {
+        tail->next = new_node;
+        new_node->prev = tail;
+        tail = new_node;
+    }
+
+    mSize++;
+};
+
+// Assume that the node belongs to the list
+void DoublyLinkedList::erase_node(DoublyLinkedNode* node) {
+    // Sanity check
+    if (!node) {
+        return;
+    }
+
+    // Unlink the node
+    auto prev = node->prev;
+    auto next = node->next;
+
+    if (prev) {
+        prev->next = next;
+    }
+
+    if (next) {
+        next->prev = prev;
+    }
+
+    // Update head
+    if (head == node) {
+        head = next;
+    }
+
+    // Update tail
+    if (tail == node) {
+        tail = prev;
+    }
+
+    mSize--;
+};
+
+// Assume that the nodes belongs to the list
+bool DoublyLinkedList::insert_after(DoublyLinkedNode* newNode, DoublyLinkedNode* pos) {
+    // Sanity check
+    if (!newNode || !pos) {
+        return false;
+    }
+
+    // Use push_back instead
+    if (pos == tail) {
+        return false;
+    }
+
+    // Insert
+    auto next = pos->next;
+    pos->next = newNode;
+    newNode->next = next;
+
+    next->prev = newNode;
+    newNode->prev = pos;
+
+    mSize++;
+
+    return true;
+}
+
+bool DoublyLinkedList::empty() {
+    return (mSize == 0);
+};
+
+
+DoublyLinkedList* create_doubly_linked_list(vector<int> values) {
+    DoublyLinkedList* list = new DoublyLinkedList();
+    
+    for (auto& v : values) {
+        list->push_back(v);
+    }
+    
+    return list;
+}
+
+DoublyLinkedNode* DoublyLinkedList::find_node(int val) {
+    DoublyLinkedNode* node = this->head;
+
+    while (node) {
+        if (node->value == val) {
+            break;
+        }
+
+        node = node->next;
+    }
+
+    return node;
+}
