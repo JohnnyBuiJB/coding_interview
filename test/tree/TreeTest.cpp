@@ -46,3 +46,17 @@ TEST(buildTree, TC002) {
 
     delete_tree(tree);
 }
+
+TEST(buildTree, TC003) {
+    vector<int> preorder = {1,2,2,3,3,kNullNode,kNullNode,4,4};
+    vector<int> exp = {1,2,2,3,3,4,4};
+    vector<int> act;
+
+    auto tree = buildTree(preorder, Order::PreOrder);
+
+    preorderTraverse(act, tree);
+
+    CHECK(exp == act);
+
+    delete_tree(tree);
+}

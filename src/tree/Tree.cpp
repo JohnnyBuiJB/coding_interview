@@ -27,6 +27,8 @@ BinTreeNode* buildTree(vector<int>& nodes, Order ord) {
 
                 q.push(&new_node->left);
                 q.push(&new_node->right);
+            } else {
+                q.pop();
             }
         }
     }
