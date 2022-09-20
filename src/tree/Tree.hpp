@@ -9,6 +9,9 @@ enum Order {
     PostOrder,
 };
 
+constexpr int kNullNode = -1;
+
+// Note: Tree only accepts non-negative values
 struct BinTreeNode {
     int val;
     BinTreeNode *left;
@@ -16,10 +19,23 @@ struct BinTreeNode {
     
     BinTreeNode() : val(0), left(nullptr), right(nullptr) {}
     
-    BinTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    BinTreeNode(int x) : left(nullptr), right(nullptr) {
+        if (x >= 0) {
+            val = x;
+        } else {
+            val = kNullNode;
+        }
+    }
     
-    BinTreeNode(int x, BinTreeNode *left, BinTreeNode *right) : val(x), 
-        left(left), right(right) {}
+    BinTreeNode(int x, BinTreeNode *left, BinTreeNode *right) {
+        if (x >= 0) {
+            val = x;
+            this->left = left;
+            this->right = right;
+        } else {
+            val = kNullNode;
+        }
+    }
 };
 
 BinTreeNode* buildTree(vector<int>& nodes, Order ord);

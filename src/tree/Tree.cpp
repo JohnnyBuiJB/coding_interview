@@ -15,17 +15,19 @@ BinTreeNode* buildTree(vector<int>& nodes, Order ord) {
         queue<BinTreeNode**> q;
 
         for (auto &node : nodes) {
-            new_node = new BinTreeNode(node);
+            if (node != kNullNode) {
+                new_node = new BinTreeNode(node);
 
-            if (!root) {
-                root = new_node;
-            } else {
-                *q.front() = new_node;
-                q.pop();
+                if (!root) {
+                    root = new_node;
+                } else {
+                    *q.front() = new_node;
+                    q.pop();
+                }
+
+                q.push(&new_node->left);
+                q.push(&new_node->right);
             }
-
-            q.push(&new_node->left);
-            q.push(&new_node->right);
         }
     }
 
