@@ -4,3 +4,4 @@
 [submodule "third_party/leetcode"]
 	path = third_party/leetcode
 	url = git@github.com:neetcode-gh/leetcode.git
+    ignore = dirty
