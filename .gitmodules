@@ -1,3 +1,6 @@
 [submodule "third_party/cpputest"]
 	path = third_party/cpputest
 	url = git@github.com:cpputest/cpputest.git
+[submodule "third_party/leetcode"]
+	path = third_party/leetcode
+	url = git@github.com:neetcode-gh/leetcode.git
