@@ -4,13 +4,6 @@
 
 using namespace std;
 
-struct location {
-    size_t i_row;
-    size_t i_col;
-
-    location(int iRow, int iCol) : i_row(iRow), i_col(iCol) {};
-};
-
 /**
  * \Trick   DFS
  * 
@@ -39,23 +32,23 @@ int numIslands(vector<vector <char> >& grid) {
             // Found new island
             if (cell_val == '1' && !visited.count(cell_loc)) {
                 n_islands++;
-                stack< location > new_island;
-                new_island.push(location(i,j));
+                stack<size_t> new_island;
+                new_island.push(i*n + j);
 
                 // Explore the entire new island
                 while (!new_island.empty()) {
                     auto new_space_loc = new_island.top();
+                    auto new_space_r = new_space_loc / n;
+                    auto new_space_c = new_space_loc % n;
                     new_island.pop();
-                    auto i_new_space = 
-                        new_space_loc.i_row*n + new_space_loc.i_col;
                     
-                    if (!visited.count(i_new_space)) {
+                    if (!visited.count(new_space_loc)) {
                         // Left
-                        if (new_space_loc.i_col > 0) {
-                            auto adj_left_r = new_space_loc.i_row;
-                            auto adj_left_c = new_space_loc.i_col - 1;
+                        if (new_space_c > 0) {
+                            auto adj_left_r = new_space_r;
+                            auto adj_left_c = new_space_c - 1;
                             auto adj_left = grid[adj_left_r][adj_left_c];
-                            auto adj_left_loc = location (adj_left_r, adj_left_c);
+                            auto adj_left_loc = adj_left_r*n + adj_left_c;
 
                             // Not yet visited land
                             if (adj_left == '1') {
@@ -64,11 +57,11 @@ int numIslands(vector<vector <char> >& grid) {
                         }
 
                         // Right
-                        if (new_space_loc.i_col < n - 1) {
-                            auto adj_right_r = new_space_loc.i_row;
-                            auto adj_right_c = new_space_loc.i_col + 1;
+                        if (new_space_c < n - 1) {
+                            auto adj_right_r = new_space_r;
+                            auto adj_right_c = new_space_c + 1;
                             auto adj_right = grid[adj_right_r][adj_right_c];
-                            auto adj_right_loc = location (adj_right_r, adj_right_c);
+                            auto adj_right_loc = adj_right_r*n + adj_right_c;
 
                             // Not yet visited land
                             if (adj_right == '1') {
@@ -77,11 +70,11 @@ int numIslands(vector<vector <char> >& grid) {
                         }
 
                         // Above
-                        if (new_space_loc.i_row > 0) {
-                            auto adj_above_r = new_space_loc.i_row - 1;
-                            auto adj_above_c = new_space_loc.i_col;
+                        if (new_space_r > 0) {
+                            auto adj_above_r = new_space_r - 1;
+                            auto adj_above_c = new_space_c;
                             auto adj_above = grid[adj_above_r][adj_above_c];
-                            auto adj_above_loc = location (adj_above_r, adj_above_c);
+                            auto adj_above_loc = adj_above_r*n + adj_above_c;
 
                             // Not yet visited land
                             if (adj_above == '1') {
@@ -90,11 +83,11 @@ int numIslands(vector<vector <char> >& grid) {
                         }
 
                         // Below
-                        if (new_space_loc.i_row < m - 1) {
-                            auto adj_below_r = new_space_loc.i_row + 1;
-                            auto adj_below_c = new_space_loc.i_col;
+                        if (new_space_r < m - 1) {
+                            auto adj_below_r = new_space_r + 1;
+                            auto adj_below_c = new_space_c;
                             auto adj_below = grid[adj_below_r][adj_below_c];
-                            auto adj_below_loc = location (adj_below_r, adj_below_c);
+                            auto adj_below_loc = adj_below_r*n + adj_below_c;
 
                             // Not yet visited land
                             if (adj_below == '1') {
@@ -102,7 +95,7 @@ int numIslands(vector<vector <char> >& grid) {
                              }
                         }
 
-                        visited.insert(i_new_space);
+                        visited.insert(new_space_loc);
                     }
                 }
             }
