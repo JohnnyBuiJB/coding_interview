@@ -359,8 +359,8 @@ if __name__ == "__main__":
             
             mod_name_pascal = snake_to_pascal(mod_name)
             
-            os.rename("./src/%s/sample.cpp" % (mod_name), \
-                      "./src/%s/%s.cpp" % (mod_name, mod_name_pascal))
+            os.rename("./src/%s/sample.hpp" % (mod_name), \
+                      "./src/%s/%s.hpp" % (mod_name, mod_name_pascal))
             
             os.rename("./test/%s/Test.cpp" % (mod_name), \
                       "./test/%s/%sTest.cpp" % (mod_name, mod_name_pascal))
