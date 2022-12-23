@@ -1,19 +1,10 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include <string>
-#include <unordered_map>
-#include <unordered_set>
 
 #include "CppUTest/TestHarness.h"
-
+#include "sample.hpp"
 
 #undef new
 #include <new>
-
-using namespace std;
-
-extern int sample_code(int a);
 
 TEST_GROUP(sample) {
     void setup() {
@@ -26,9 +17,11 @@ TEST_GROUP(sample) {
 };
 
 TEST(sample, TC001) {
-    int in = 0;
-    auto exp = 0;
+    auto solution = Solution();
 
-    auto act = sample_code(in);
-    CHECK(act == exp);
+    int exp = 1;
+
+    auto act = solution.sampleCode();
+
+    CHECK_EQUAL(exp, act);
 }
